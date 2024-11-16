@@ -1,0 +1,18 @@
+huawei_cloud:
+  access_key_id: "your-access-key-id"
+  access_key_secret: "your-access-key-secret"
+  region: "your-region"  # 华为云的区域，例如 cn-north-1
+  domains:
+    - domain_name: "example.com"
+      target_name: "sub.example.com"
+      line: "default"
+      type: "A"
+      csv_file: "speedtest_results.csv"
+    - domain_name: "anotherdomain.com"
+      target_name: "sub.anotherdomain.com"
+      line: "telecom"
+      type: "A"
+      csv_file: "speedtest_results_telecom.csv"
+
+csv:
+  n_rows: 5  # 提取 CSV 文件中的前 n 行数据作为目标 IP
