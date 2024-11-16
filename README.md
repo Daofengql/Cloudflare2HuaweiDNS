@@ -1,0 +1,2 @@
+# Cloudflare2HuaweiDNS
+将CloudflareSpeedTest的测速结果同步到华为云指定的记录上，支持多域名和分线路
