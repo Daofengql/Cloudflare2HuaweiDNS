@@ -1,0 +1,4 @@
+pyyaml==6.0.2
+loguru==0.7.2
+panadas==0.2
+pandas==2.2.3
