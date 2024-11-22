@@ -33,11 +33,18 @@ jobs:
       run: |
         pyinstaller --onefile --distpath dist/ main.py
 
+    - name: Package files into ZIP
+      shell: powershell
+      run: |
+        $zipPath = "dist\Cloudflare2HuaweiDNS.zip"
+        $filesToZip = @("dist\main.exe", "config.yaml")
+        Compress-Archive -Path $filesToZip -DestinationPath $zipPath
+
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: Cloudflare2HuaweiDNS
-        path: dist/main.exe
+        path: dist/Cloudflare2HuaweiDNS.zip
 
     - name: Create GitHub Release
       id: create_release
@@ -56,6 +63,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: dist/main.exe
-        asset_name: Cloudflare2HuaweiDNS.exe
-        asset_content_type: application/octet-stream
+        asset_path: dist/Cloudflare2HuaweiDNS.zip
+        asset_name: Cloudflare2HuaweiDNS.zip
+        asset_content_type: application/zip
